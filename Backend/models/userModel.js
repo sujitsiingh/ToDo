@@ -6,11 +6,23 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
+    },
+    username: {
+      type: String,
+      required: true,
+      unique: true,
     },
     password: {
       type: String,
       required: true,
     },
+    todos: [
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Todo",
+      },
+    ],
     confirmed: {
       type: Boolean,
       default: false,
