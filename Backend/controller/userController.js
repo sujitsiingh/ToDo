@@ -1,68 +1,36 @@
 const User = require('../models/userModel');
-const bcrypt = require('bcrypt');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
 
-module.exports.register = (async (req, res) => {
+module.exports.getAllUsers = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-
-        // if any one of the field from email and password is not filled
-        if (!email || !password) {
-            return res.json({
-                success: false,
-                message: 'email or password is empty!!.. fill in both',
-            });
-        }
-
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            console.log('email already registered', email);
-            return res.status(404).json({ message: 'Email already registered' });
-        }
-
-        req.body.password = await bcrypt.hash(password, 10);
-
-        // Create new user
-        let newUser = new User(req.body);
-
-        await newUser.save();
-        console.log("New user saved", newUser);
-
-        res.status(201).json({
-            message: "Registration successful...", success: true, data: newUser,
-        });
-
+        const allUsers = await User.find();
+        res.status(200).json({ message: "All Users Fetched", allUsers });
     } catch (error) {
-        console.log('Error during registration', error);
-        return res.status(500).json({ message: 'Registration failed', success: false });
+        res.status(400).json({ message: "didn't find any users", error });
     }
-});
-
-const generateSecretKey = () => {
-    const secretKey = crypto.randomBytes(32).toString("hex");
-    return secretKey;
 };
 
-const secretKey = generateSecretKey();
-
-module.exports.login = (async (req, res) => { 
+module.exports.updateUser = async (req, res) => {
+    const id = req.params.id;
     try {
-        const { email, password } = req.body;
-        let existUser = await User.findOne({ email });
-        if (!existUser) {
-            return res.json({ status: 401, success: true, message: "user not found with this email" });
-        }
-        // bcrypting the password and comparing the one in db
-        if (await bcrypt.compare(password, existUser.password)) {
-
-            const token = jwt.sign({ userId: existUser._id }, secretKey, { expiresIn: '23h' });
-            existUser.save();
-
-            return res.json({ success: true, status: 200, message: "user Logged in", data: existUser, token: token });
-        }
-        return res.json({ success: false, status: 400, message: "user credentials are not correct", });
+        const newUpdatedUser = await User.findByIdAndUpdate(id, req.body);
+        res.status(200).json({ message: "User updated successfully", newUpdatedUser });
     } catch (error) {
-        res.status(500).json({ message: 'login error' + error.message });
+        res.status(400).json({ message: "User: failed to edit", error });
     }
-});
+};
+
+
+module.exports.deleteUser = async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findByIdAndDelete(userId);
+
+        if (!user) return res.status(200).json({ message: "User already deleted or not found" });
+
+        res.status(200).json({ message: "User deleted successfully", user });
+
+    } catch (error) {
+        res.status(500).json({ message: "You're not authorize to delete users", error });
+    }
+};
