@@ -1,0 +1,157 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "ToDoServer",
+    "dateExported": "2024-07-21T11:53:58.936Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "49ce6bb2-4421-4167-bd19-6b2b10be0509",
+            "name": "Auth Request",
+            "containerId": "",
+            "created": "2024-07-20T15:20:39.847Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "452e394d-ce1c-4820-8454-9b5be8ba48bd",
+            "name": "User Request",
+            "containerId": "",
+            "created": "2024-07-20T19:59:00.627Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "3c84dd2a-7206-4db9-8925-8e6619f5c285",
+            "name": "Todos Request",
+            "containerId": "",
+            "created": "2024-07-20T20:01:38.652Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "88b1b5e5-9bf4-4cf2-b21a-de746a7d7bf5",
+            "colId": "a04b5616-c0f0-4c5d-9b27-ac9eaae7d665",
+            "containerId": "49ce6bb2-4421-4167-bd19-6b2b10be0509",
+            "name": "Register User",
+            "url": "localhost:3000/api/user/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-07-20T15:21:03.600Z",
+            "modified": "2024-07-20T20:54:42.107Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"veronika\",\n  \"email\": \"veronika@gmail.com\",\n  \"password\": \"veronika\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e989401b-7b79-461e-9377-c03b39829376",
+            "colId": "a04b5616-c0f0-4c5d-9b27-ac9eaae7d665",
+            "containerId": "49ce6bb2-4421-4167-bd19-6b2b10be0509",
+            "name": "Login User",
+            "url": "localhost:3000/api/user/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-07-20T15:30:32.846Z",
+            "modified": "2024-07-20T20:55:14.121Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"veronika@gmail.com\",\n  \"password\": \"veronika\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bcffb0d0-4f09-4c5a-93a6-5963726e1f51",
+            "colId": "a04b5616-c0f0-4c5d-9b27-ac9eaae7d665",
+            "containerId": "452e394d-ce1c-4820-8454-9b5be8ba48bd",
+            "name": "Get User",
+            "url": "localhost:3000/api/users/",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-07-20T20:00:43.405Z",
+            "modified": "2024-07-20T20:00:56.769Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "18385b8e-6d06-44d7-acf7-186544f3a2c1",
+            "colId": "a04b5616-c0f0-4c5d-9b27-ac9eaae7d665",
+            "containerId": "3c84dd2a-7206-4db9-8925-8e6619f5c285",
+            "name": "Add Todo",
+            "url": "localhost:3000/api/todos/addTodo",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-07-20T20:02:20.753Z",
+            "modified": "2024-07-20T21:12:55.395Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"form fillup\",\n  \"description\": \"google form fillup for squbix\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3d92f757-f0b1-43bb-a1ef-2785a86f9932",
+            "colId": "a04b5616-c0f0-4c5d-9b27-ac9eaae7d665",
+            "containerId": "3c84dd2a-7206-4db9-8925-8e6619f5c285",
+            "name": "byUser Todo",
+            "url": "localhost:3000/api/todos/todosByUser/669c2411e8f853009f836737",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-07-20T20:06:38.431Z",
+            "modified": "2024-07-20T21:14:50.228Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjljMjQxMWU4Zjg1MzAwOWY4MzY3MzciLCJpYXQiOjE3MjE1MDk4NjcsImV4cCI6MTcyMTU5MjY2N30.m_QRxprFpgAoyx4Ray_yifnGifNbGW7iky40caPZUbw"
+            },
+            "tests": []
+        },
+        {
+            "_id": "38d7798c-7001-427c-ba85-5c2c1b6f3f53",
+            "colId": "a04b5616-c0f0-4c5d-9b27-ac9eaae7d665",
+            "containerId": "3c84dd2a-7206-4db9-8925-8e6619f5c285",
+            "name": "getAll Todo",
+            "url": "localhost:3000/api/todos/",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-07-20T20:29:49.979Z",
+            "modified": "2024-07-20T21:06:37.579Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer",
+                    "isDisabled": true
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "basic",
+                "basic": {
+                    "username": "veronika",
+                    "password": "veronika"
+                }
+            },
+            "tests": []
+        }
+    ]
+}
