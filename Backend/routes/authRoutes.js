@@ -22,7 +22,7 @@ const authController = require('../controller/authController');
  *               password:
  *                 type: string
  *     responses:
- *       201:
+ *       200:
  *         description: User successfully registered
  *       400:
  *         description: Bad Request
